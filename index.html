@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Bagobo People</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff3d4, #f3d5a2);
+      color: #4a2c0a;
+    }
+    header {
+      background: linear-gradient(90deg, #6f3b10, #a35e1a);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    nav {
+      background-color: #8b4513;
+      display: flex; justify-content: center; gap: 12px; padding: 12px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff8dc; text-decoration: none; padding: 10px 18px;
+      border-radius: 20px; background: #a0522d; transition: 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover {
+      background: #ffd966; color: #5b2c06;
+    }
+    .content {
+      display: none;
+      margin: 40px auto;
+      width: 85%;
+      background: white;
+      padding: 25px;
+      border-left: 8px solid #a35e1a;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+      animation: fadeIn 0.8s;
+    }
+    #home { display: block; text-align: center; padding: 60px; }
+    button {
+      padding: 12px 23px; margin-top: 20px;
+      background: #a35e1a; border: none; color: white;
+      border-radius: 25px; cursor: pointer;
+    }
+    button:hover {
+      background: #ffd966; color: #5b2c06;
+    }
+    footer {
+      background-color: #6f3b10; color: white;
+      text-align: center; padding: 12px; margin-top: 30px;
+    }
+    iframe {
+      width: 100%; height: 350px; border: 0; border-radius: 8px;
+      margin-top: 15px;
+    }
+    .gallery {
+      display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px;
+    }
+    .gallery img {
+      width: calc(33% - 10px);
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      object-fit: cover;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @media (max-width: 800px) {
+      .gallery img { width: calc(50% - 10px); }
+    }
+    @media (max-width: 500px) {
+      .gallery img { width: 100%; }
+      nav { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>The Bagobo People</h1>
+  <p>Discover Culture, Tradition, and Identity</p>
+</header>
+
+<nav>
+  <a onclick="showPage('home')">Home</a>
+  <a onclick="showPage('about')">About</a>
+  <a onclick="showPage('culture')">Culture</a>
+  <a onclick="showPage('clothing')">Clothing</a>
+  <a onclick="showPage('beliefs')">Beliefs</a>
+  <a onclick="showPage('location')">Location</a>
+  <a onclick="showPage('gallery')">Gallery</a>
+</nav>
+
+<div id="home" class="content">
+  <h1>Welcome</h1>
+  <p>Discover the heritage of the Bagobo people in Mindanao.</p>
+  <button onclick="showPage('about')">Explore</button>
+</div>
+
+<div id="about" class="content">
+  <h2>About the Bagobo</h2>
+  <p>The Bagobo are indigenous people mainly living in Davao and other parts of Mindanao, Philippines.</p>
+</div>
+
+<div id="culture" class="content">
+  <h2>Culture</h2>
+  <p>Music, dance, rituals, and weaving are essential parts of Bagobo heritage.</p>
+</div>
+
+<div id="clothing" class="content">
+  <h2>Clothing</h2>
+  <p>The Bagobo are known for woven abaca garments, beadwork, embroidery, and brass ornaments.</p>
+</div>
+
+<div id="beliefs" class="content">
+  <h2>Beliefs</h2>
+  <p>The Bagobo traditionally believe in nature spirits, gods, and ancestral beings.</p>
+</div>
+
+<div id="location" class="content">
+  <h2>Location</h2>
+  <p>The Bagobo traditionally live around Mount Apo and in parts of Davao Region, Mindanao.</p>
+  <iframe src="https://www.google.com/maps?q=Mount%20Apo%20Philippines&output=embed"></iframe>
+</div>
+
+<div id="gallery" class="content">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Bagobo_warriors_1900.jpg" alt="Bagobo warriors">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Bagobo_woman_1900.jpg" alt="Bagobo woman">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Bagobo_man_1900.jpg" alt="Bagobo man">
+    <img src="https://cdn.pixabay.com/photo/2016/02/19/11/53/tribal-people-1209667_1280.jpg" alt="Indigenous People">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Mount_Apo.jpg" alt="Mount Apo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Kulintang_ensemble.jpg" alt="Kulintang instruments">
+  </div>
+</div>
+
+<footer>
+  <p>Designed Website About Bagobo | Student Project</p>
+</footer>
+
+<script>
+  function showPage(page) {
+    let sections = document.querySelectorAll('.content');
+    sections.forEach(sec => sec.style.display = 'none');
+    document.getElementById(page).style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
