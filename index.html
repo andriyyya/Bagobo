@@ -14,8 +14,17 @@
     header {
       background: linear-gradient(90deg, #6f3b10, #a35e1a);
       color: white;
-      padding: 30px;
+      padding: 10px 30px 25px;
       text-align: center;
+    }
+    header img {
+      height: 200px;
+      margin-bottom: 0px;
+      margin-top: -20px;
+    }
+    header h1 {
+      margin-top: -15px;
+      margin-bottom: 5px;
     }
     nav {
       background-color: #8b4513;
@@ -41,14 +50,32 @@
       box-shadow: 0 5px 10px rgba(0,0,0,0.15);
       animation: fadeIn 0.8s;
     }
+    #content {
+      text-align: justify;
+      line-height: 1.6;
+      font-size: 20px;
+    }
+    #contentHome {
+      text-align: center;
+      line-height: 1.6;
+      font-size: 20px;
+    }
     #home { display: block; text-align: center; padding: 60px; }
     button {
       padding: 12px 23px; margin-top: 20px;
       background: #a35e1a; border: none; color: white;
       border-radius: 25px; cursor: pointer;
+      margin-right: 10px;
     }
     button:hover {
       background: #ffd966; color: #5b2c06;
+    }
+    .explore-buttons {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
     }
     footer {
       background-color: #6f3b10; color: white;
@@ -73,10 +100,15 @@
     }
     @media (max-width: 800px) {
       .gallery img { width: calc(50% - 10px); }
+      header img { height: 150px; }
+      header h1 { margin-top: -10px; }
     }
     @media (max-width: 500px) {
       .gallery img { width: 100%; }
       nav { flex-direction: column; }
+      header img { height: 120px; margin-top: -10px; }
+      header h1 { margin-top: -5px; }
+      header { padding: 5px 20px 20px; }
     }
   </style>
 </head>
@@ -84,50 +116,121 @@
 <body>
 
 <header>
-  <h1>The Bagobo People</h1>
+  <img src="Bagobo Logo.png" alt="Bagobo Logo" style="height: 200px; margin-bottom: 0px; margin-top: -20px;">
+  <h1 style="margin-top: -15px;">The Bagobo People</h1>
   <p>Discover Culture, Tradition, and Identity</p>
 </header>
 
 <nav>
   <a onclick="showPage('home')">Home</a>
   <a onclick="showPage('about')">About</a>
+  <a onclick="showPage('location')">Location</a>
   <a onclick="showPage('culture')">Culture</a>
   <a onclick="showPage('clothing')">Clothing</a>
   <a onclick="showPage('beliefs')">Beliefs</a>
-  <a onclick="showPage('location')">Location</a>
   <a onclick="showPage('gallery')">Gallery</a>
+  <a onclick="showPage('developer')">Developers</a>
 </nav>
 
 <div id="home" class="content">
   <h1>Welcome</h1>
-  <p>Discover the heritage of the Bagobo people in Mindanao.</p>
+  <p id="contentHome">Discover the heritage of the Bagobo people in Mindanao.</p>
   <button onclick="showPage('about')">Explore</button>
 </div>
 
 <div id="about" class="content">
   <h2>About the Bagobo</h2>
-  <p>The Bagobo are indigenous people mainly living in Davao and other parts of Mindanao, Philippines.</p>
+  <br>
+  <div style="text-align: center; margin: 20px 0;">
+    <img src="bagobo.jpg" alt="Bagobo" style="width: 700px; max-width: 95%; height: auto; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+  </div>
+  <br>
+  <p id="content">Scattered throughout the Southern Philippine Archipelago slowly disappearing tribes 
+    untouched by neither time nor colonization still exist in present time. 
+    Along the desolate eastern coast of the Davao Gulf, centuries ago, new migrants 
+    mixed with the native population, forming a new community that was given the name Bagobo. 
+    This tribe traces its origin from the people who brought Hinduism to Mindanao, its name was 
+    derived from the words bago meaning new and obo meaning growth. Throughout centuries a 
+    strong social structure has enabled these native groups to blend well with the 
+    original population, retaining their indigenous customs, beliefs and values. The Bagobo are by 
+    origin a nomadic tribe, they travelled from one 
+    place to the other by hacking their way through the virgin forests.
+  </p>
+
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('location')">Explore Location</button>
+    <button onclick="showPage('culture')">Explore Culture</button>
+    <button onclick="showPage('clothing')">Explore Clothing</button>
+    <button onclick="showPage('beliefs')">Explore Beliefs</button>
+  </div>
 </div>
 
 <div id="culture" class="content">
   <h2>Culture</h2>
-  <p>Music, dance, rituals, and weaving are essential parts of Bagobo heritage.</p>
+  <p>Bagobo culture is rich with traditional music, dance, and rituals. They are known for their epic chants called "Tud-om" which tell stories of their ancestors and gods. The "Gin-um" ritual is a significant ceremony involving offerings to spirits for good harvest and health.</p>
+  
+  <p>Music plays a vital role in their ceremonies, with instruments like the "agung" (gong), "kulintang" (gong chimes), and bamboo instruments. Traditional dances often depict stories from their mythology and daily life activities.</p>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')">Back to About</button>
+    <button onclick="showPage('clothing')">Explore Clothing</button>
+    <button onclick="showPage('beliefs')">Explore Beliefs</button>
+  </div>
 </div>
 
 <div id="clothing" class="content">
   <h2>Clothing</h2>
-  <p>The Bagobo are known for woven abaca garments, beadwork, embroidery, and brass ornaments.</p>
+  <p>The Bagobo are renowned for their intricate woven textiles made from abaca fibers. Their traditional clothing includes:</p>
+  <ul>
+    <li><strong>Inabal:</strong> Traditional woven cloth with geometric patterns</li>
+    <li><strong>Malong:</strong> Tube skirt worn by both men and women</li>
+    <li><strong>Accessories:</strong> Beadwork, brass belts, and jewelry made from shells and seeds</li>
+    <li><strong>Colors:</strong> Natural dyes from plants produce red, black, and indigo colors</li>
+  </ul>
+  <p>Clothing indicates social status, with more elaborate designs worn by datus (chiefs) and wealthy members of the community.</p>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')">Back to About</button>
+    <button onclick="showPage('culture')">Explore Culture</button>
+    <button onclick="showPage('beliefs')">Explore Beliefs</button>
+  </div>
 </div>
 
 <div id="beliefs" class="content">
   <h2>Beliefs</h2>
-  <p>The Bagobo traditionally believe in nature spirits, gods, and ancestral beings.</p>
+  <p>The Bagobo traditionally believe in a pantheon of deities and spirits. Their chief god is <strong>Eugpamolak Manobo</strong> (also called Manama), the creator god. Other important deities include:</p>
+  <ul>
+    <li><strong>Mandangan:</strong> The war god</li>
+    <li><strong>Bai:</strong> The goddess of fertility and agriculture</li>
+    <li><strong>Nature spirits:</strong> Believed to inhabit mountains, rivers, and forests</li>
+  </ul>
+  <p>They practice animism and believe that spirits must be appeased through rituals and offerings. A "Baylan" (shaman) serves as a spiritual intermediary between the people and the spirit world.</p>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')">Back to About</button>
+    <button onclick="showPage('culture')">Explore Culture</button>
+    <button onclick="showPage('clothing')">Explore Clothing</button>
+  </div>
 </div>
 
 <div id="location" class="content">
   <h2>Location</h2>
-  <p>The Bagobo traditionally live around Mount Apo and in parts of Davao Region, Mindanao.</p>
+  <p>The Bagobo traditionally inhabit the areas around Mount Apo, the highest mountain in the Philippines, located in the Davao Region of Mindanao. Their settlements are concentrated in:</p>
+  <ul>
+    <li>Davao del Sur province</li>
+    <li>North Cotabato province</li>
+    <li>Eastern parts of Cotabato province</li>
+    <li>Areas surrounding Mount Apo</li>
+  </ul>
+  <p>Their communities are typically located near rivers and forested areas, which are central to their subsistence and spiritual practices.</p>
   <iframe src="https://www.google.com/maps?q=Mount%20Apo%20Philippines&output=embed"></iframe>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')">Back to About</button>
+    <button onclick="showPage('culture')">Explore Culture</button>
+    <button onclick="showPage('beliefs')">Explore Beliefs</button>
+  </div>
 </div>
 
 <div id="gallery" class="content">
@@ -140,6 +243,12 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Mount_Apo.jpg" alt="Mount Apo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Kulintang_ensemble.jpg" alt="Kulintang instruments">
   </div>
+</div>
+
+<div id="developer" class="content">
+  <h2>Developers</h2>
+  <p>This website was created as a student project to educate people about the rich cultural heritage of the Bagobo people.</p>
+  <p><strong>Sources:</strong> Information was gathered from various ethnographic sources including the ThingsAsian article "Last Tribes of Mindanao: The Bagobo" and other academic references on Philippine indigenous cultures.</p>
 </div>
 
 <footer>
