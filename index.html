@@ -3,112 +3,594 @@
 <head>
   <meta charset="UTF-8">
   <title>The Bagobo People</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Use a more reliable particles.js version -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --primary-brown: #6f3b10;
+      --secondary-brown: #a35e1a;
+      --accent-gold: #ffd966;
+      --light-beige: #fff3d4;
+      --medium-beige: #f3d5a2;
+      --dark-brown: #4a2c0a;
+      --pattern-color: #8b4513;
+    }
+    
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #fff3d4, #f3d5a2);
-      color: #4a2c0a;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(163, 94, 26, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(255, 217, 102, 0.1) 0%, transparent 20%),
+        linear-gradient(to bottom, var(--light-beige), var(--medium-beige));
+      color: var(--dark-brown);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(139, 69, 19, 0.05) 20px, rgba(139, 69, 19, 0.05) 40px),
+        repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(111, 59, 16, 0.05) 20px, rgba(111, 59, 16, 0.05) 40px);
+      z-index: -1;
+    }
+    
     header {
-      background: linear-gradient(90deg, #6f3b10, #a35e1a);
       color: white;
-      padding: 10px 30px 25px;
+      padding: 20px 30px 30px;
       text-align: center;
-    }
-    header img {
-      height: 200px;
-      margin-bottom: 0px;
-      margin-top: -20px;
-    }
-    header h1 {
-      margin-top: -15px;
-      margin-bottom: 5px;
-    }
-    nav {
-      background-color: #8b4513;
-      display: flex; justify-content: center; gap: 12px; padding: 12px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #fff8dc; text-decoration: none; padding: 10px 18px;
-      border-radius: 20px; background: #a0522d; transition: 0.3s;
-      cursor: pointer;
-    }
-    nav a:hover {
-      background: #ffd966; color: #5b2c06;
-    }
-    .content {
-      display: none;
-      margin: 40px auto;
-      width: 85%;
-      background: white;
-      padding: 25px;
-      border-left: 8px solid #a35e1a;
-      border-radius: 10px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-      animation: fadeIn 0.8s;
-    }
-    #content {
-      text-align: justify;
-      line-height: 1.6;
-      font-size: 20px;
-    }
-    #contentHome {
-      text-align: center;
-      line-height: 1.6;
-      font-size: 20px;
-    }
-    #home { display: block; text-align: center; padding: 60px; }
-    button {
-      padding: 12px 23px; margin-top: 20px;
-      background: #a35e1a; border: none; color: white;
-      border-radius: 25px; cursor: pointer;
-      margin-right: 10px;
-    }
-    button:hover {
-      background: #ffd966; color: #5b2c06;
-    }
-    .explore-buttons {
-      margin-top: 30px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 8px solid var(--accent-gold);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      min-height: 280px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
     }
+    
+    /* Make sure particles container is visible */
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: repeating-linear-gradient(to right, var(--accent-gold), var(--accent-gold) 10px, transparent 10px, transparent 20px);
+      z-index: 3;
+    }
+    
+    .logo-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 15px;
+      z-index: 2;
+    }
+    
+    .logo-container::before,
+    .logo-container::after {
+      content: "✦";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent-gold);
+      font-size: 24px;
+      animation: pulse 2s infinite;
+    }
+    
+    .logo-container::before { left: -40px; }
+    .logo-container::after { right: -40px; }
+    
+    header img {
+      height: 180px;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+      transition: transform 0.5s;
+      position: relative;
+      z-index: 2;
+    }
+    
+    header img:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+    
+    header h1 {
+      margin-top: -25px;
+      font-size: 52px;
+      font-weight: bold;
+      text-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+      letter-spacing: 2px;
+      position: relative;
+      display: inline-block;
+      padding: 0 20px;
+      z-index: 2;
+    }
+    
+    header h1::before,
+    header h1::after {
+      content: "—";
+      position: absolute;
+      top: 50%;
+      color: var(--accent-gold);
+      font-size: 28px;
+    }
+    
+    header h1::before { left: -10px; }
+    header h1::after { right: -10px; }
+    
+    header p {
+      font-size: 22px;
+      margin-top: 10px;
+      font-style: italic;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      position: relative;
+      display: inline-block;
+      padding: 5px 15px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 20px;
+      z-index: 2;
+    }
+    
+    nav {
+      background-color: var(--pattern-color);
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--accent-gold);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    nav a {
+      color: #fff8dc;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 25px; 
+      background: linear-gradient(to bottom, var(--secondary-brown), var(--primary-brown));
+      transition: all 0.3s;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-size: 16px;
+      white-space: nowrap;
+    }
+    
+    nav a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover {
+      background: linear-gradient(to bottom, var(--accent-gold), #e6c259);
+      color: var(--dark-brown);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    
+    nav a i {
+      font-size: 16px;     
+      margin-right: 8px;
+    }
+    
+    .content {
+      display: none;
+      margin: 50px auto;
+      width: 90%;
+      max-width: 1200px;
+      background: white;
+      padding: 35px;
+      border: 2px solid var(--secondary-brown);
+      border-radius: 20px;
+      box-shadow: 
+        0 10px 30px rgba(0,0,0,0.15),
+        inset 0 0 0 1px rgba(255, 217, 102, 0.3);
+      animation: fadeIn 0.8s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--primary-brown), var(--accent-gold), var(--primary-brown));
+    }
+    
+    .content::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px dashed rgba(163, 94, 26, 0.3);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+    
+    #home { 
+      display: block; 
+      text-align: center; 
+      padding: 80px 40px;
+      background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                  url('https://transparenttextures.com/patterns/wood-pattern.png');
+    }
+    
+    #home h1 {
+      font-size: 48px;
+      color: var(--primary-brown);
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    #home h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25%;
+      right: 25%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    }
+    
+    #content, #contentHome, .content p {
+      text-align: justify;
+      line-height: 1.8;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    
+    #contentHome {
+      font-size: 22px;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: var(--dark-brown);
+    }
+    
+    button {
+      padding: 15px 30px;
+      margin-top: 20px;
+      background: linear-gradient(to bottom, var(--secondary-brown), var(--primary-brown));
+      border: 2px solid var(--accent-gold);
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 1px;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    
+    button:hover {
+      background: linear-gradient(to bottom, var(--accent-gold), #e6c259);
+      color: var(--dark-brown);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    button::after {
+      content: "→";
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: all 0.3s;
+    }
+    
+    button:hover::after {
+      right: 20px;
+      opacity: 1;
+    }
+    
+    .explore-buttons {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    
     footer {
-      background-color: #6f3b10; color: white;
-      text-align: center; padding: 12px; margin-top: 30px;
+      background: linear-gradient(to bottom, var(--primary-brown), #5b2c06);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 60px;
+      position: relative;
+      border-top: 5px solid var(--accent-gold);
     }
+    
+    footer::before {
+      content: "✦ ✦ ✦";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--accent-gold);
+      font-size: 20px;
+      letter-spacing: 15px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    
+    footer p {
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    
     iframe {
-      width: 100%; height: 350px; border: 0; border-radius: 8px;
-      margin-top: 15px;
+      width: 100%;
+      height: 400px;
+      border: 3px solid var(--secondary-brown);
+      border-radius: 12px;
+      margin-top: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
+    
     .gallery {
-      display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 25px;
     }
+    
     .gallery img {
-      width: calc(33% - 10px);
-      border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      width: calc(33.333% - 14px);
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
       object-fit: cover;
+      transition: all 0.4s;
+      border: 3px solid transparent;
+      height: 250px;
     }
+    
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: var(--accent-gold);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    }
+    
+    ul {
+      padding-left: 30px;
+      margin: 20px 0;
+    }
+    
+    ul li {
+      margin-bottom: 12px;
+      line-height: 1.7;
+      font-size: 20px;
+      position: relative;
+    }
+    
+    ul li::before {
+      content: "▶";
+      color: var(--secondary-brown);
+      position: absolute;
+      left: -25px;
+    }
+    
+    h2 {
+      font-size: 36px;
+      color: var(--primary-brown);
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--secondary-brown), var(--accent-gold));
+      border-radius: 2px;
+    }
+
+    h3 {
+      font-size: 28px;
+      color: var(--primary-brown);
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--secondary-brown), var(--accent-gold));
+      border-radius: 2px;
+    }
+
+    h4 {
+      font-size: 24px;
+      color: var(--secondary-brown);
+      margin: 25px 0 15px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    h4::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+    }
+    
+    /* Animations */
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    @media (max-width: 800px) {
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; transform: translateY(-50%) scale(1); }
+      50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1100px) {
       .gallery img { width: calc(50% - 10px); }
-      header img { height: 150px; }
-      header h1 { margin-top: -10px; }
+      nav a { 
+        font-size: 13px; 
+        padding: 7px 12px; 
+      }
+      nav a i { font-size: 12px; margin-right: 4px; }
     }
-    @media (max-width: 500px) {
+    
+    @media (max-width: 800px) {
+      header h1 { font-size: 42px; }
+      header img { height: 150px; }
+      nav { 
+        gap: 4px; 
+        padding: 8px;
+      }
+      nav a { 
+        padding: 6px 10px; 
+        font-size: 12px; 
+      }
+      .content { width: 95%; padding: 25px; }
+      .gallery img { height: 200px; }
+    }
+    
+    @media (max-width: 600px) {
+      header { padding: 15px 20px 25px; }
+      header h1 { font-size: 34px; margin-top: -15px; }
+      header p { font-size: 18px; }
+      header img { height: 120px; }
+      nav { 
+        flex-direction: row; 
+        align-items: center; 
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      nav a { 
+        width: auto; 
+        text-align: center; 
+        margin-bottom: 0; 
+        padding: 5px 8px;
+        font-size: 11px;
+        border-radius: 15px;
+      }
+      nav a i { font-size: 10px; margin-right: 3px; }
       .gallery img { width: 100%; }
-      nav { flex-direction: column; }
-      header img { height: 120px; margin-top: -10px; }
-      header h1 { margin-top: -5px; }
-      header { padding: 5px 20px 20px; }
+      h2 { font-size: 28px; }
+      h3 { font-size: 20px; }
+      h4 { font-size: 18px; }
+      #content, .content p, ul li { font-size: 18px; }
+    }
+    
+    @media (max-width: 400px) {
+      nav a { 
+        font-size: 10px; 
+        padding: 4px 6px;
+      }
+      nav a i { font-size: 9px; margin-right: 2px; }
+    }
+    
+    .tribal-border {
+      height: 20px;
+      background: repeating-linear-gradient(45deg, var(--pattern-color), var(--pattern-color) 10px, var(--accent-gold) 10px, var(--accent-gold) 20px);
+      margin: 30px 0;
+    }
+    
+    .pattern-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--secondary-brown), transparent);
+      margin: 30px 0;
+    }
+    
+    .cultural-motif {
+      text-align: center;
+      margin: 30px 0;
+      color: var(--secondary-brown);
+      font-size: 24px;
+      letter-spacing: 10px;
+    }
+
+    .instrument-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .instrument-card {
+      background: var(--light-beige);
+      border-radius: 12px;
+      padding: 20px;
+      border: 2px solid var(--medium-beige);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .instrument-card h5 {
+      color: var(--primary-brown);
+      font-size: 20px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent-gold);
+      padding-bottom: 8px;
+    }
+
+    .dance-category {
+      background: linear-gradient(to right, rgba(255, 217, 102, 0.1), transparent);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border-left: 5px solid var(--accent-gold);
     }
   </style>
 </head>
@@ -116,125 +598,322 @@
 <body>
 
 <header>
-  <img src="Bagobo Logo.png" alt="Bagobo Logo" style="height: 200px; margin-bottom: 0px; margin-top: -20px;">
-  <h1 style="margin-top: -15px;">The Bagobo People</h1>
+  <!-- Particles.js Canvas -->
+  <div id="particles-js"></div>
+  
+  <div class="logo-container">
+    <img src="Bagobo Logo.png" alt="Bagobo Logo">
+  </div>
+  <h1>The Bagobo People</h1>
   <p>Discover Culture, Tradition, and Identity</p>
 </header>
 
 <nav>
-  <a onclick="showPage('home')">Home</a>
-  <a onclick="showPage('about')">About</a>
-  <a onclick="showPage('location')">Location</a>
-  <a onclick="showPage('culture')">Culture</a>
-  <a onclick="showPage('clothing')">Clothing</a>
-  <a onclick="showPage('beliefs')">Beliefs</a>
-  <a onclick="showPage('gallery')">Gallery</a>
-  <a onclick="showPage('developer')">Developers</a>
+  <a onclick="showPage('home')"><i class="fas fa-home"></i> Home</a>
+  <a onclick="showPage('about')"><i class="fas fa-info-circle"></i> About Bagobo</a>
+  <a onclick="showPage('location')"><i class="fas fa-map-marker-alt"></i> Location</a>
+  <a onclick="showPage('culture')"><i class="fas fa-users"></i> Culture & Tradition</a>
+  <a onclick="showPage('music')"><i class="fas fa-music"></i> Music & Dance</a>
+  <a onclick="showPage('clothing')"><i class="fas fa-tshirt"></i> Clothing</a>
+  <a onclick="showPage('beliefs')"><i class="fas fa-pray"></i> Beliefs</a>
+  <a onclick="showPage('gallery')"><i class="fas fa-images"></i> Gallery</a>
+  <a onclick="showPage('developer')"><i class="fas fa-users"></i> Developers</a>
 </nav>
 
 <div id="home" class="content">
-  <h1>Welcome</h1>
-  <p id="contentHome">Discover the heritage of the Bagobo people in Mindanao.</p>
-  <button onclick="showPage('about')">Explore</button>
+  <h1>Welcome to Bagobo Heritage</h1>
+  <div class="cultural-motif">✦ ✦ ✦</div>
+  <p id="contentHome">Journey into the heart of Mindanao to discover the rich cultural tapestry of the Bagobo people. Explore their traditions, artistry, and spiritual connections that have endured through centuries.</p>
+  <button onclick="showPage('about')">Begin Exploration <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></button>
 </div>
 
 <div id="about" class="content">
   <h2>About the Bagobo</h2>
-  <br>
-  <div style="text-align: center; margin: 20px 0;">
-    <img src="bagobo.jpg" alt="Bagobo" style="width: 700px; max-width: 95%; height: auto; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+  <div class="pattern-divider"></div>
+  <div style="text-align: center; margin: 30px 0;">
+    <img src="bagobo.jpg" alt="Bagobo" style="width: 100%; max-width: 900px; height: auto; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.25); border: 5px solid var(--accent-gold);">
   </div>
-  <br>
-  <p id="content">Scattered throughout the Southern Philippine Archipelago slowly disappearing tribes 
-    untouched by neither time nor colonization still exist in present time. 
-    Along the desolate eastern coast of the Davao Gulf, centuries ago, new migrants 
-    mixed with the native population, forming a new community that was given the name Bagobo. 
-    This tribe traces its origin from the people who brought Hinduism to Mindanao, its name was 
-    derived from the words bago meaning new and obo meaning growth. Throughout centuries a 
-    strong social structure has enabled these native groups to blend well with the 
-    original population, retaining their indigenous customs, beliefs and values. The Bagobo are by 
-    origin a nomadic tribe, they travelled from one 
-    place to the other by hacking their way through the virgin forests.
-  </p>
+  <div class="pattern-divider"></div>
+  <p id="content">Scattered throughout the Southern Philippine Archipelago slowly disappearing tribes untouched by neither time nor colonization still exist in present time. Along the desolate eastern coast of the Davao Gulf, centuries ago, new migrants mixed with the native population, forming a new community that was given the name Bagobo. This tribe traces its origin from the people who brought Hinduism to Mindanao, its name was derived from the words bago meaning new and obo meaning growth. Throughout centuries a strong social structure has enabled these native groups to blend well with the original population, retaining their indigenous customs, beliefs and values. The Bagobo are by origin a nomadic tribe, they travelled from one place to the other by hacking their way through the virgin forests.</p>
+  
+<!-- Klata -->
+<br>
+<h3>Bagobo Klata</h3>
+  <div style="text-align: center; margin: 30px 0;">
+    <img src="Klata.jpeg" alt="Bagobo Klata" style="width: 100%; max-width: 900px; height: auto; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.25); border: 5px solid var(--accent-gold);">
+  </div>
 
+  <p id="content">The Bagobo Klata are an indigenous people traditionally inhabiting an area bounded by the Davao River to the north, the Lipadas River to the south, Davao City to the east, and the border with North Cotabato to the west. Their name, "Klata," is derived from the word "klat-tang," which refers to the long bamboo or wooden staircase used to access their distinctive single-post houses. These dwellings, supported by one sturdy post, could reach heights comparable to full-grown trees. Historically known as forest dwellers, the Klata people traditionally lived within the forest. They are also recognized as warriors, a title earned from their historical role in protecting their community from Spanish colonization.</p>
+
+  <!-- Tagabawa -->
+   <br>
+ <h3>Bagobo Tagabawa</h3>
+  <div style="text-align: center; margin: 30px 0;">
+    <img src="Tagabawa (1).jpeg" alt="Bagobo Tagabawa" style="width: 100%; max-width: 900px; height: auto; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.25); border: 5px solid var(--accent-gold);">
+  </div>
+
+  <p id="content">The Bagobo Tagabawa are one of the indigenous peoples of the Philippines, residing primarily on the western and southern slopes of Mount Apo, the country's highest mountain, in Davao del Sur. Their name roughly translates to "People of the South," distinguishing them from other Bagobo groups. The Bagobo-Tagabawa people, primarily agricultural, cultivate rice and crops while occasionally raising livestock. Rooted in animism, some have also embraced Christianity. Their stilt bamboo houses with thatched roofs, situated in Tibolo, showcase their unique lifestyle. Adorned in vibrant garments reflecting their artistic skill, the Bagobo-Tagabawa are skilled in beadwork and weaving.</p>
+
+<!-- 1.	Obu-Manuvu -->
+   <br>
+ <h3>Obu Manuvu</h3>
+  <div style="text-align: center; margin: 30px 0;">
+    <img src="Obu Manuvu.png" alt="Obu Manuvu" style="width: 100%; max-width: 900px; height: auto; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.25); border: 5px solid var(--accent-gold);">
+  </div>
+
+  <p id="content">The Obu Manuvu are an indigenous people traditionally inhabiting areas across Southern Bukidnon, Northeastern Cotabato, and Northeastern Davao. The term "Manuvu" translates to "person" or "people," and "Obu" refers specifically to their language and distinct ethnic group. This identity originated from the historical intermarriage and cultural fusion between the Bagobo Klata and Bagobo Tagabawa groups on the slopes of Mount Apo. Historically known as skilled swidden farmers and forest dwellers, the Obu Manuvu are also recognized for their intricate basketry, brasswork, and beadwork. Their society is traditionally organized under a datu system and guided by a rich oral tradition and animistic beliefs.</p>
+
+
+  <div class="tribal-border"></div>
   
   <div class="explore-buttons">
-    <button onclick="showPage('location')">Explore Location</button>
-    <button onclick="showPage('culture')">Explore Culture</button>
-    <button onclick="showPage('clothing')">Explore Clothing</button>
-    <button onclick="showPage('beliefs')">Explore Beliefs</button>
-  </div>
-</div>
-
-<div id="culture" class="content">
-  <h2>Culture</h2>
-  <p>Bagobo culture is rich with traditional music, dance, and rituals. They are known for their epic chants called "Tud-om" which tell stories of their ancestors and gods. The "Gin-um" ritual is a significant ceremony involving offerings to spirits for good harvest and health.</p>
-  
-  <p>Music plays a vital role in their ceremonies, with instruments like the "agung" (gong), "kulintang" (gong chimes), and bamboo instruments. Traditional dances often depict stories from their mythology and daily life activities.</p>
-  
-  <div class="explore-buttons">
-    <button onclick="showPage('about')">Back to About</button>
-    <button onclick="showPage('clothing')">Explore Clothing</button>
-    <button onclick="showPage('beliefs')">Explore Beliefs</button>
-  </div>
-</div>
-
-<div id="clothing" class="content">
-  <h2>Clothing</h2>
-  <p>The Bagobo are renowned for their intricate woven textiles made from abaca fibers. Their traditional clothing includes:</p>
-  <ul>
-    <li><strong>Inabal:</strong> Traditional woven cloth with geometric patterns</li>
-    <li><strong>Malong:</strong> Tube skirt worn by both men and women</li>
-    <li><strong>Accessories:</strong> Beadwork, brass belts, and jewelry made from shells and seeds</li>
-    <li><strong>Colors:</strong> Natural dyes from plants produce red, black, and indigo colors</li>
-  </ul>
-  <p>Clothing indicates social status, with more elaborate designs worn by datus (chiefs) and wealthy members of the community.</p>
-  
-  <div class="explore-buttons">
-    <button onclick="showPage('about')">Back to About</button>
-    <button onclick="showPage('culture')">Explore Culture</button>
-    <button onclick="showPage('beliefs')">Explore Beliefs</button>
-  </div>
-</div>
-
-<div id="beliefs" class="content">
-  <h2>Beliefs</h2>
-  <p>The Bagobo traditionally believe in a pantheon of deities and spirits. Their chief god is <strong>Eugpamolak Manobo</strong> (also called Manama), the creator god. Other important deities include:</p>
-  <ul>
-    <li><strong>Mandangan:</strong> The war god</li>
-    <li><strong>Bai:</strong> The goddess of fertility and agriculture</li>
-    <li><strong>Nature spirits:</strong> Believed to inhabit mountains, rivers, and forests</li>
-  </ul>
-  <p>They practice animism and believe that spirits must be appeased through rituals and offerings. A "Baylan" (shaman) serves as a spiritual intermediary between the people and the spirit world.</p>
-  
-  <div class="explore-buttons">
-    <button onclick="showPage('about')">Back to About</button>
-    <button onclick="showPage('culture')">Explore Culture</button>
-    <button onclick="showPage('clothing')">Explore Clothing</button>
+    <button onclick="showPage('location')"><i class="fas fa-map"></i> Explore Location</button>
+    <button onclick="showPage('culture')"><i class="fas fa-drum"></i> Explore Culture & Tradition</button>
+    <button onclick="showPage('music')"><i class="fas fa-music"></i> Explore Music & Dance</button>
+    <button onclick="showPage('clothing')"><i class="fas fa-vest"></i> Explore Clothing</button>
+    <button onclick="showPage('beliefs')"><i class="fas fa-star-and-crescent"></i> Explore Beliefs</button>
   </div>
 </div>
 
 <div id="location" class="content">
   <h2>Location</h2>
-  <p>The Bagobo traditionally inhabit the areas around Mount Apo, the highest mountain in the Philippines, located in the Davao Region of Mindanao. Their settlements are concentrated in:</p>
+  <div class="pattern-divider"></div>
+  <p id="content">The Bagobo traditionally inhabit the areas around Mount Apo, the highest mountain in the Philippines, located in the Davao Region of Mindanao. Their settlements are concentrated in:</p>
   <ul>
-    <li>Davao del Sur province</li>
-    <li>North Cotabato province</li>
-    <li>Eastern parts of Cotabato province</li>
-    <li>Areas surrounding Mount Apo</li>
+    <li><strong>Davao del Sur</strong> (especially municipalities like Bansalan, Digos, and Santa Cruz).</li>
+    <li><strong>Districts within Davao City</strong> (e.g., Calinan, Tugbok).</li>
+    <li><strong>Surrounding areas</strong> of Davao Occidental, North Cotabato, and Davao del Norte.</li>
   </ul>
-  <p>Their communities are typically located near rivers and forested areas, which are central to their subsistence and spiritual practices.</p>
+  <p style="text-align: justify; line-height: 1.8; font-size: 20px;">Their communities are typically located near rivers and forested areas, which are central to their subsistence and spiritual practices.</p>
+  
+  <div class="pattern-divider"></div>
+  
   <iframe src="https://www.google.com/maps?q=Mount%20Apo%20Philippines&output=embed"></iframe>
   
   <div class="explore-buttons">
-    <button onclick="showPage('about')">Back to About</button>
-    <button onclick="showPage('culture')">Explore Culture</button>
-    <button onclick="showPage('beliefs')">Explore Beliefs</button>
+    <button onclick="showPage('about')"><i class="fas fa-arrow-left"></i> Back to About</button>
+    <button onclick="showPage('culture')"><i class="fas fa-drum"></i> Explore Culture & Tradition</button>
+    <button onclick="showPage('music')"><i class="fas fa-music"></i> Explore Music & Dance</button>
+    <button onclick="showPage('clothing')"><i class="fas fa-vest"></i> Explore Clothing</button>
+    <button onclick="showPage('beliefs')"><i class="fas fa-star-and-crescent"></i> Explore Beliefs</button>
+  </div>
+</div>
+
+<div id="culture" class="content">
+  <h2>Culture & Tradition</h2>
+  <div class="pattern-divider"></div>
+  
+  <p id="content">Bagobo culture is a vibrant tapestry woven from a sacred connection to Mount Apo, a complex spirit world, and an extraordinary artistic legacy expressed through textile, bead, and metal.</p>
+
+   <br>
+ <h3>Social and Political Structure</h3>
+ <ul>
+    <li id="content"><strong>Datu System:</strong> Society is traditionally organized under a datu (chief), who is a leader in judicial, political, and social matters. The position is often, but not always, hereditary.</li>
+    <li id="content"><strong>Council of Elders:</strong> The datu consults with a council of elders for major community decisions.</li>
+    <li id="content"><strong>Specialized Roles:</strong> Spiritual matters are led by the mabalian (a female ritualist/healer) or baylan (shaman). Master artisans, especially weavers and metalworkers, also hold respected positions.</li>
+  </ul>
+
+  <br>
+ <h3>Material Culture and Craftsmanship</h3>
+  <ul>
+    <li id="content">
+      <strong>Weaving and Textiles:</strong> The Bagobo are master weavers of abaca (Musa textilis). Their process involves ikat dyeing and intricate embroidery.
+      <br>
+      <div style="text-align: center; margin: 15px 0;">
+        <img src="weaving.jpg" alt="Bagobo Weaving" style="width: 100%; max-width: 600px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 3px solid var(--accent-gold);">
+      </div>
+    </li>
+    <li id="content">
+      <strong>Beadwork:</strong> Beadwork is a significant art form, with elaborate necklaces, bracelets, and headdresses made from glass beads, seeds, and shells.
+      <br>
+      <div style="text-align: center; margin: 15px 0;">
+        <img src="Beadwork.jpg" alt="Bagobo Beadwork" style="width: 100%; max-width: 600px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 3px solid var(--accent-gold);">
+      </div>
+    </li>
+    <li id="content">
+      <strong>Metalwork:</strong> Skilled in brass casting and silverwork, the Bagobo create ornate jewelry and ceremonial items.
+      <br>
+      <div style="text-align: center; margin: 15px 0;">
+        <img src="Metalwork.jpg" alt="Bagobo Metalwork" style="width: 100%; max-width: 600px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 3px solid var(--accent-gold);">
+      </div>
+    </li>
+    <li id="content">
+      <strong>Basketry and Carving:</strong> The Bagobo produce functional and artistic baskets, as well as wooden tools and items.
+      <br>
+      <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 15px 0;">
+        <img src="basket.jpg" alt="Bagobo Basketry" style="width: calc(50% - 10px); max-width: 300px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 3px solid var(--accent-gold);">
+        <img src="Carving.jpg" alt="Bagobo Carving" style="width: calc(50% - 10px); max-width: 300px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 3px solid var(--accent-gold);">
+      </div>
+    </li>
+  </ul>
+
+<br>
+ <h3>Livelihood</h3>
+ <ul>
+    <li id="content"><strong>Agriculture:</strong> The Bagobo practice swidden (slash-and-burn) agriculture, cultivating rice, corn, root crops, and vegetables.</li>
+    <li id="content"><strong>Hunting and Gathering:</strong> They supplement their diet with hunting, fishing, and gathering forest products.</li>
+  </ul>
+
+<br>
+ <h3>Oral Tradition</h3>
+ <p id="content">The Bagobo tribe has a rich tradition of epics, chants, myths, and folktales (passed down by the tuwaang, or bard) that preserves their history, laws, and cosmology. The Tuwaang Epic is one of the most famous.</p>
+<br>
+      <div style="text-align: center; margin: 15px 0;">
+        <img src="TUWAANG.png" alt="Tuwaang Epic" style="width: 100%; max-width: 600px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 3px solid var(--accent-gold);">
+      </div>
+
+  <div class="cultural-motif">◈ ◇ ◈</div>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')"><i class="fas fa-arrow-left"></i> Back to About</button>
+    <button onclick="showPage('location')"><i class="fas fa-map"></i> Explore Location</button>
+    <button onclick="showPage('music')"><i class="fas fa-music"></i> Explore Music & Dance</button>
+    <button onclick="showPage('clothing')"><i class="fas fa-vest"></i> Explore Clothing</button>
+    <button onclick="showPage('beliefs')"><i class="fas fa-star-and-crescent"></i> Explore Beliefs</button>
+  </div>
+</div>
+
+<div id="music" class="content">
+  <h2>Music & Dance</h2>
+  <div class="pattern-divider"></div>
+  
+  <p id="content">Music and dance are not mere entertainment for the Bagobo; they are vital sacred, social, and communicative acts woven into rituals, storytelling, and community bonding. They serve as a bridge to the spirit world and a vessel for cultural memory.</p>
+
+  <br>
+  <h3>MUSIC: Soundscapes of Ritual and Community</h3>
+  <p id="content">Bagobo music is primarily percussion-driven, creating complex, hypnotic rhythms that accompany dance and ritual.</p>
+  
+  <h4>1. Primary Musical Instruments:</h4>
+  
+  <div class="instrument-grid">
+    <div class="instrument-card">
+      <h5>Agung Ensemble (Kulintang)</h5>
+      <p id="content">The most important ensemble. It consists of:</p>
+      <ul>
+        <li id="content"><strong>Agung/Gandingan:</strong> Large, deep-rimmed gongs that provide the foundational, resonant melody and rhythm. Played with a padded mallet.</li>
+        <li id="content"><strong>Babendil/Kulintang:</strong> A set of 8 small, knobbed gongs laid horizontally in a wooden frame. Played with two light sticks, it produces intricate, melodic patterns.</li>
+      </ul>
+    </div>
+    
+    <div class="instrument-card">
+      <h5>Drums (Debakan/Gandang)</h5>
+      <p id="content">Double-headed drums made from hollowed wood and animal skin. They provide the driving, rhythmic pulse and tempo changes, often signaling transitions in a dance.</p>
+    </div>
+    
+    <div class="instrument-card">
+      <h5>Bamboo Instruments</h5>
+      <ul>
+        <li id="content"><strong>Serongagandi:</strong> A bamboo violin or zither with strings cut from the bamboo itself.</li>
+        <li id="content"><strong>Flutes (Suling/Taralidi):</strong> Bamboo flutes used for lyrical, melodic lines, often in courting or storytelling contexts.</li>
+        <li id="content"><strong>Jew's Harp (Kubing/Suling):</strong> A small, plucked bamboo instrument held against the lips. It creates private, intimate sounds often used for personal expression or courting.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>2. Vocal Music:</h4>
+  <ul>
+    <li id="content"><strong>Chants (Tud-om/Ugom):</strong> Ritualistic, often epic-length chants performed by the baylan (shaman) or mabalian (priestess). These are not sung with melody but in a dramatic, rhythmic, heightened speech pattern. They invoke spirits, narrate mythological stories (like the Tuwaang epic), and are central to healing and agricultural rites.</li>
+    <li id="content"><strong>Lullabies (Uyayi) and Courting Songs:</strong> Everyday songs passed down through generations.</li>
+  </ul>
+
+  <br>
+  <h3>DANCE: Movement as Prayer, Story, and Social Order</h3>
+  <p id="content">Dance (sayaw/saill) visually expresses their cosmology, history, and social hierarchy.</p>
+
+  <div class="dance-category">
+    <h4>1. Ritual and Ceremonial Dances:</h4>
+    <ul>
+      <li id="content"><strong>Pangayaw (Headhunting/ War Dance):</strong> A fierce, masculine dance performed with a shield (kalasag) and sword (kampilan or kris). It commemorates past warrior valor, with aggressive stomping, leaping, and simulated combat movements. It is now performed as a symbolic re-enactment of their warrior heritage.</li>
+      <li id="content"><strong>Healing and Propitiatory Dances:</strong> Performed by the baylan or community during illness or misfortune. Dancers move in trance-like states, their movements aiming to appease angry spirits or call upon benevolent ones for intervention.</li>
+      <li id="content"><strong>Life Cycle Dances:</strong> Performed during weddings, births, and funerals to mark and sanctify the transition. Wedding dances, for instance, are elegant and celebratory, showcasing the couple's new status.</li>
+    </ul>
+  </div>
+
+  <div class="dance-category">
+    <h4>2. Mimetic and Narrative Dances:</h4>
+    <ul>
+      <li id="content"><strong>Animal Mimicry Dances:</strong> Dances imitating the movements of birds (manok/manuk), monkeys, and eagles. These often tell folk tales or symbolize specific traits like grace, agility, or freedom.</li>
+      <li id="content"><strong>Epic Dances:</strong> Dances that physically enact scenes from their oral epics, bringing legendary heroes and ancestral stories to life.</li>
+    </ul>
+  </div>
+
+  <div class="dance-category">
+    <h4>3. Social and Festival Dances:</h4>
+    <ul>
+      <li id="content"><strong>Community Circle Dances:</strong> Often performed during festivals (kahimunan) or after a successful harvest. Dancers move in a circle with synchronized, rhythmic steps, symbolizing unity and celebration.</li>
+      <li id="content"><strong>Courtship Dances:</strong> Feature playful, flirtatious movements between men and women, often using scarves or other props.</li>
+    </ul>
+  </div>
+
+  <br>
+  <h3>The Integration: Costume, Context, and Meaning</h3>
+  <ul>
+    <li id="content"><strong>Costume as Amplifier:</strong> Dances are performed in full traditional regalia—vibrant inabal weave, elaborate beadwork, brass belts, and feathered headdresses. The swaying of bead tassels, the clinking of brass bells, and the rustle of abaca fabric become part of the music and visual spectacle, emphasizing the dancer's status and the ritual's importance.</li>
+    <li id="content"><strong>Sacred Context:</strong> Most significant music and dance occur within rituals led by the baylan. The rhythm of the agung is believed to call the spirits, and the dancer's movements become a medium for spiritual communication.</li>
+    <li id="content"><strong>Preservation and Performance:</strong> Today, these traditions are kept alive by cultural masters and are proudly performed at community gatherings, schools, and cultural festivals like the Kagmayen Festival in Davao del Sur, serving as a powerful tool for cultural education and identity pride among younger generations.</li>
+  </ul>
+
+  <div class="cultural-motif">♪ ♫ ♪</div>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')"><i class="fas fa-arrow-left"></i> Back to About</button>
+    <button onclick="showPage('culture')"><i class="fas fa-drum"></i> Explore Culture & Tradition</button>
+    <button onclick="showPage('location')"><i class="fas fa-map"></i> Explore Location</button>
+    <button onclick="showPage('clothing')"><i class="fas fa-vest"></i> Explore Clothing</button>
+    <button onclick="showPage('beliefs')"><i class="fas fa-star-and-crescent"></i> Explore Beliefs</button>
+  </div>
+</div>
+
+<div id="clothing" class="content">
+  <h2>Clothing</h2>
+  <div class="pattern-divider"></div>
+  <p id="content">The Bagobo are renowned for their intricate woven textiles made from abaca fibers. Their traditional clothing includes:</p>
+  <ul>
+    <li id="content"><strong>Inabal:</strong> Traditional woven cloth with geometric patterns</li>
+    <li id="content"><strong>Malong:</strong> Tube skirt worn by both men and women</li>
+    <li id="content"><strong>Accessories:</strong> Beadwork, brass belts, and jewelry made from shells and seeds</li>
+    <li id="content"><strong>Colors:</strong> Natural dyes from plants produce red, black, and indigo colors</li>
+  </ul>
+  <p id="content">Clothing indicates social status, with more elaborate designs worn by datus (chiefs) and wealthy members of the community.</p>
+  
+  <div class="cultural-motif">◈ ◇ ◈</div>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')"><i class="fas fa-arrow-left"></i> Back to About</button>
+    <button onclick="showPage('location')"><i class="fas fa-map"></i> Explore Location</button>
+    <button onclick="showPage('culture')"><i class="fas fa-drum"></i> Explore Culture & Tradition</button>
+    <button onclick="showPage('music')"><i class="fas fa-music"></i> Explore Music & Dance</button>
+    <button onclick="showPage('beliefs')"><i class="fas fa-star-and-crescent"></i> Explore Beliefs</button>
+  </div>
+</div>
+
+<div id="beliefs" class="content">
+  <h2>Beliefs</h2>
+  <div class="pattern-divider"></div>
+  <p id="content">The Bagobo traditionally believe in a pantheon of deities and spirits. Their chief god is <strong>Eugpamolak Manobo</strong> (also called Manama), the creator god. Other important deities include:</p>
+  <ul>
+    <li id="content"><strong>Mandangan:</strong> The war god</li>
+    <li id="content"><strong>Bai:</strong> The goddess of fertility and agriculture</li>
+    <li id="content"><strong>Nature spirits:</strong> Believed to inhabit mountains, rivers, and forests</li>
+  </ul>
+  <p id="content">They practice animism and believe that spirits must be appeased through rituals and offerings. A "Baylan" (shaman) serves as a spiritual intermediary between the people and the spirit world.</p>
+  
+  <div class="cultural-motif">☾ ☼ ☽</div>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')"><i class="fas fa-arrow-left"></i> Back to About</button>
+    <button onclick="showPage('culture')"><i class="fas fa-drum"></i> Explore Culture & Tradition</button>
+    <button onclick="showPage('music')"><i class="fas fa-music"></i> Explore Music & Dance</button>
+    <button onclick="showPage('clothing')"><i class="fas fa-vest"></i> Explore Clothing</button>
+    <button onclick="showPage('location')"><i class="fas fa-map"></i> Explore Location</button>
   </div>
 </div>
 
 <div id="gallery" class="content">
   <h2>Gallery</h2>
+  <div class="pattern-divider"></div>
+  <p id="content">Explore visual representations of Bagobo life, traditions, and environment through this collection of images.</p>
+  
   <div class="gallery">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Bagobo_warriors_1900.jpg" alt="Bagobo warriors">
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Bagobo_woman_1900.jpg" alt="Bagobo woman">
@@ -243,23 +922,133 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Mount_Apo.jpg" alt="Mount Apo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Kulintang_ensemble.jpg" alt="Kulintang instruments">
   </div>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('about')"><i class="fas fa-arrow-left"></i> Back to About</button>
+    <button onclick="showPage('culture')"><i class="fas fa-drum"></i> Explore Culture & Tradition</button>
+    <button onclick="showPage('music')"><i class="fas fa-music"></i> Explore Music & Dance</button>
+    <button onclick="showPage('clothing')"><i class="fas fa-vest"></i> Explore Clothing</button>
+  </div>
 </div>
 
 <div id="developer" class="content">
   <h2>Developers</h2>
-  <p>This website was created as a student project to educate people about the rich cultural heritage of the Bagobo people.</p>
-  <p><strong>Sources:</strong> Information was gathered from various ethnographic sources including the ThingsAsian article "Last Tribes of Mindanao: The Bagobo" and other academic references on Philippine indigenous cultures.</p>
+  <div class="pattern-divider"></div>
+  <p id="content">This website was created as a student project to educate people about the rich cultural heritage of the Bagobo people. Our goal is to preserve and share the unique traditions, beliefs, and artistry of this indigenous community.</p>
+  
+  <div class="tribal-border"></div>
+  
+  <p id="content"><strong>Sources:</strong> Information was gathered from various ethnographic sources including the ThingsAsian article "Last Tribes of Mindanao: The Bagobo" and other academic references on Philippine indigenous cultures.</p>
+  
+  <div class="cultural-motif">✧ ✦ ✧</div>
+  
+  <div class="explore-buttons">
+    <button onclick="showPage('home')"><i class="fas fa-home"></i> Return Home</button>
+    <button onclick="showPage('about')"><i class="fas fa-info-circle"></i> About Bagobo</button>
+  </div>
 </div>
 
 <footer>
-  <p>Designed Website About Bagobo | Student Project</p>
+  <p id="content">Student Project | Preserving Indigenous Heritage</p>
+  <p style="margin-top: 10px; font-size: 16px; opacity: 0.9;">© 2025 Bagobo Cultural Heritage IEC</p>
 </footer>
 
 <script>
+  // Initialize particles when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM loaded, initializing particles...");
+    
+    // Try to initialize particles with a different approach
+    if (typeof particlesJS !== 'undefined') {
+      console.log("Particles.js library loaded");
+      
+      particlesJS('particles-js', {
+        particles: {
+          number: {
+            value: 100,
+            density: {
+              enable: true,
+              value_area: 800
+            }
+          },
+          color: {
+            value: "#ffd966"
+          },
+          shape: {
+            type: "circle"
+          },
+          opacity: {
+            value: 0.5,
+            random: true
+          },
+          size: {
+            value: 4,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 3
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: 120,
+            color: "#ffd966",
+            opacity: 0.2,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 3,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "repulse"
+            },
+            onclick: {
+              enable: true,
+              mode: "push"
+            }
+          }
+        },
+        retina_detect: true
+      });
+      
+      console.log("Particles initialized successfully");
+    } else {
+      console.error("Particles.js library not loaded. Check the CDN link.");
+    }
+    
+    // Add hover effect to gallery images
+    const galleryImages = document.querySelectorAll('.gallery img');
+    galleryImages.forEach(img => {
+      img.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      img.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+    
+    // Add animation to header on load
+    const header = document.querySelector('header');
+    header.style.animation = 'fadeIn 1s ease-out';
+  });
+
   function showPage(page) {
     let sections = document.querySelectorAll('.content');
     sections.forEach(sec => sec.style.display = 'none');
     document.getElementById(page).style.display = 'block';
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
 
