@@ -593,6 +593,7 @@
       margin: 20px 0;
       border-left: 5px solid var(--accent-gold);
     }
+    
     .developer-img {
       width: 150px;
       height: 150px;
@@ -613,6 +614,124 @@
       margin-top: 30px;
       font-size: 15px; /* bigger on hover */
       transition: font-size 0.1s;
+    }
+    
+    /* Costume comparison styles */
+    .costume-comparison {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin: 30px 0;
+    }
+    
+    .costume-card {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      background: var(--light-beige);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border: 2px solid var(--medium-beige);
+    }
+    
+    .costume-card h4 {
+      text-align: center;
+      color: var(--primary-brown);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent-gold);
+      padding-bottom: 10px;
+    }
+    
+    .costume-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+    .costume-items {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px dashed var(--secondary-brown);
+    }
+    
+    .costume-item {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .costume-item:last-child {
+      border-bottom: none;
+    }
+    
+    .costume-name {
+      font-weight: bold;
+      color: var(--primary-brown);
+    }
+    
+    .costume-desc {
+      font-size: 16px;
+      color: var(--dark-brown);
+      margin-top: 5px;
+    }
+    
+    /* Updated Gallery Section - Fixed sizing */
+    .clothing-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 25px 0;
+      justify-content: center;
+    }
+    
+    .clothing-item {
+      width: calc(50% - 10px);
+      max-width: 400px;
+      text-align: center;
+    }
+    
+    .clothing-image {
+      width: 100%;
+      height: 300px; /* Fixed height for both images */
+      object-fit: cover; /* Ensures images fill the space without distortion */
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      border: 3px solid var(--accent-gold);
+    }
+    
+    .clothing-caption {
+      font-size: 18px;
+      color: var(--primary-brown);
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .clothing-source {
+      font-size: 14px;
+      color: var(--secondary-brown);
+      font-style: italic;
+    }
+    
+    @media (max-width: 768px) {
+      .clothing-item {
+        width: 100%;
+        max-width: 500px;
+      }
+      
+      .clothing-image {
+        height: 250px; /* Slightly smaller on mobile */
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .clothing-image {
+        height: 200px; /* Even smaller on very small screens */
+      }
     }
   </style>
 </head>
@@ -1014,14 +1133,129 @@
 <div id="clothing" class="content">
   <h2>Clothing</h2>
   <div class="pattern-divider"></div>
-  <p id="content">The Bagobo are renowned for their intricate woven textiles made from abaca fibers. Their traditional clothing includes:</p>
+  
+  <p id="content">The Bagobo are renowned for their intricate woven textiles made from abaca fibers. Their traditional clothing is not merely functional but serves as a visual language that communicates social status, cultural identity, and spiritual beliefs.</p>
+  
+  <h3>The Art of Inabal Weaving</h3>
+  <p id="content"><strong>Inabal</strong> is the traditional woven cloth of the Bagobo, created from abaca fibers through a meticulous process:</p>
   <ul>
-    <li id="content"><strong>Inabal:</strong> Traditional woven cloth with geometric patterns</li>
-    <li id="content"><strong>Malong:</strong> Tube skirt worn by both men and women</li>
-    <li id="content"><strong>Accessories:</strong> Beadwork, brass belts, and jewelry made from shells and seeds</li>
-    <li id="content"><strong>Colors:</strong> Natural dyes from plants produce red, black, and indigo colors</li>
+    <li id="content"><strong>Abaca Preparation:</strong> Abaca fibers are extracted from the banana plant, cleaned, and dyed using natural materials</li>
+    <li id="content"><strong>Natural Dyes:</strong> Red from tree bark, black from iron-rich mud, indigo from native plants</li>
+    <li id="content"><strong>Weaving Process:</strong> Using backstrap looms, intricate geometric patterns are created</li>
+    <li id="content"><strong>Symbolism:</strong> Patterns often represent nature elements like mountains, rivers, and ancestral connections</li>
   </ul>
-  <p id="content">Clothing indicates social status, with more elaborate designs worn by datus (chiefs) and wealthy members of the community.</p>
+  
+  <div class="tribal-border"></div>
+  
+  <h3>Traditional Bagobo Clothes</h3>
+  <p id="content">Bagobo traditional attire varies between genders and reflects their intricate craftsmanship:</p>
+  
+  <!-- Costume Comparison -->
+  <div class="costume-comparison">
+    
+    <!-- Female Costume Card -->
+    <div class="costume-card">
+      <h4>Female Attire</h4>
+      <img src="bagobo-costume-female.jpg" alt="Bagobo Female Costume" class="costume-image">
+      <div class="costume-items">
+        <div class="costume-item">
+          <div class="costume-name">LOLEN (Headpiece)</div>
+          <div class="costume-desc">Ornate headpiece often decorated with beads, coins, and feathers</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">ERRAT (Headband)</div>
+          <div class="costume-desc">Beaded headband that holds the headpiece in place</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">ARETES (Earrings)</div>
+          <div class="costume-desc">Large, elaborate earrings made from beads, seeds, or metal</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">UMPAK KA BAYE (Women's Blouse)</div>
+          <div class="costume-desc">Fitted blouse made from inabal cloth with intricate embroidery</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">RUBE (Leglet with Bells)</div>
+          <div class="costume-desc">Anklets with small bells that create rhythmic sounds during dances</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">SUN NOD (Skirt)</div>
+          <div class="costume-desc">Wrap-around skirt made from multiple layers of inabal cloth</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Male Costume Card -->
+    <div class="costume-card">
+      <h4>Male Attire</h4>
+      <img src="bagobo-costume-male.jpg" alt="Bagobo Male Costume" class="costume-image">
+      <div class="costume-items">
+        <div class="costume-item">
+          <div class="costume-name">TANGKULO (Headcloth)</div>
+          <div class="costume-desc">Traditional head covering, often indicating social status</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">SALAGBAT (Necklace)</div>
+          <div class="costume-desc">Beaded necklace with protective and decorative functions</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">KABIL (Men's Bag)</div>
+          <div class="costume-desc">Woven bag for carrying personal items and betel nut paraphernalia</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">TIKAS (Leglets)</div>
+          <div class="costume-desc">Ornate leg bands, often with beadwork or brass decorations</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">UMPAK KA MAMA (Long-sleeved Jacket)</div>
+          <div class="costume-desc">Traditional jacket, often with intricate beadwork and embroidery</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">ALLAN (Belt Sash)</div>
+          <div class="costume-desc">Wide belt that holds the shorts and displays weaving skills</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">SARVAR (Shorts)</div>
+          <div class="costume-desc">Traditional shorts made from inabal cloth</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div style="text-align: center; margin-top: 20px; margin-bottom: 30px;">
+    <a href="https://www.artstation.com/artwork/yDyPN8" 
+       target="_blank" 
+       style="font-size: 14px; color: var(--primary-brown); text-decoration: none;">
+       Image Source: Bagobo Traditional Attire – ArtStation
+    </a>
+  </div>
+  
+  <div class="pattern-divider"></div>
+  
+  <h3>Additional Clothing Gallery</h3>
+  <div class="clothing-gallery">
+    <div class="clothing-item">
+      <img src="inabal-weaving.jpg" alt="Inabal Weaving" class="clothing-image">
+      <div class="clothing-caption">Inabal Weaving Process</div>
+      <div class="clothing-source">Image Source: Inabal Weaving Process – The Philippine Star</div>
+    </div>
+    <div class="clothing-item">
+      <img src="bagobo-jewelry.jpg" alt="Bagobo Jewelry" class="clothing-image">
+      <div class="clothing-caption">Traditional Beadwork and Jewelry</div>
+      <div class="clothing-source">Image Source: Traditional Beadwork and Jewelry – Fine Art America</div>
+    </div>
+  </div>
+  
+  <h3>Social Significance</h3>
+  <p id="content">Clothing indicates social status within the Bagobo community:</p>
+  <ul>
+    <li id="content"><strong>Datus (Chiefs):</strong> Wear the most elaborate designs with extensive beadwork and metal decorations</li>
+    <li id="content"><strong>Warriors:</strong> Incorporate symbols of bravery and protection in their attire</li>
+    <li id="content"><strong>Weavers:</strong> Display their skill through intricate patterns and color combinations</li>
+    <li id="content"><strong>Ceremonial Attire:</strong> Special costumes are worn for rituals, weddings, and festivals</li>
+  </ul>
+  
+  <p id="content">The Bagobo's clothing tradition is a living art form that continues to evolve while maintaining its cultural significance, with younger generations learning the skills from master weavers to preserve this important heritage.</p>
   
   <div class="cultural-motif">◈ ◇ ◈</div>
   
@@ -1035,17 +1269,176 @@
 </div>
 
 <div id="beliefs" class="content">
-  <h2>Beliefs</h2>
+  <h2>Beliefs & Spiritual Worldview</h2>
   <div class="pattern-divider"></div>
-  <p id="content">The Bagobo traditionally believe in a pantheon of deities and spirits. Their chief god is <strong>Eugpamolak Manobo</strong> (also called Manama), the creator god. Other important deities include:</p>
-  <ul>
-    <li id="content"><strong>Mandangan:</strong> The war god</li>
-    <li id="content"><strong>Bai:</strong> The goddess of fertility and agriculture</li>
-    <li id="content"><strong>Nature spirits:</strong> Believed to inhabit mountains, rivers, and forests</li>
-  </ul>
-  <p id="content">They practice animism and believe that spirits must be appeased through rituals and offerings. A "Baylan" (shaman) serves as a spiritual intermediary between the people and the spirit world.</p>
   
-  <div class="cultural-motif">☾ ☼ ☽</div>
+  <p id="content">Bagobo spirituality is a living tradition of rituals, offerings, and deep respect for the natural and spiritual world, aimed at ensuring community well-being and agricultural prosperity.</p>
+
+  <br>
+  <p id="content">The Bagobo possess a profound animistic worldview where every aspect of the natural world is imbued with spirit or soul-force, known as <strong>gimokod</strong>. These spirits are active, sentient beings with distinct personalities that directly influence human life.</p>
+
+  <div style="text-align: center; margin: 30px 0;">
+    <img src="spiritual-ceremony.jpeg" alt="Bagobo Spiritual Ceremony" 
+         style="width: 100%; max-width: 900px; height: auto; 
+                border-radius: 15px; 
+                box-shadow: 0 15px 30px rgba(0,0,0,0.25); 
+                border: 5px solid var(--accent-gold);">
+  </div>
+  <div style="text-align: center; margin-top: -10px; margin-bottom: 30px;">
+    <a href="#" target="_blank" 
+       style="font-size: 14px; color: var(--primary-brown); text-decoration: none;">
+       Image Source: Bagobo Spiritual Ceremony – peacebuilderscommunity.org
+    </a>
+  </div>
+
+  <h3>The Spirit World Hierarchy</h3>
+  
+  <div class="instrument-grid">
+    <div class="instrument-card">
+      <h5>Nature Spirits (Diwata/Anito)</h5>
+      <p id="content">Spirits residing in specific, tangible places: ancient trees (balete), large rocks, mountains, rivers, caves, and the forest itself. <strong>Mount Apo (Apo Sandawa)</strong> is the most sacred, home to the most powerful deities.</p>
+    </div>
+    
+    <div class="instrument-card">
+      <h5>Ancestral Spirits (Kalaladan)</h5>
+      <p id="content">The spirits of ancestors are ever-present and must be honored. They act as guardians and guides but may cause misfortune if neglected or offended.</p>
+    </div>
+    
+    <div class="instrument-card">
+      <h5>Deities</h5>
+      <p id="content">For many Bagobo Tagabawa, the supreme couple is <strong>Eugpamolak Manobo</strong> (the creator) and <strong>Baitpandi</strong>. These higher deities govern the cosmic order.</p>
+    </div>
+    
+    <div class="instrument-card">
+      <h5>Malevolent Spirits (Busaw)</h5>
+      <p id="content">Harmful spirits that cause illness, crop failure, and accidents. These evil spirits, sometimes associated with cannibalism, represent the dangerous aspects of the spirit world.</p>
+    </div>
+  </div>
+
+  <h3>The Principle of Balance and Reciprocity</h3>
+  <p id="content">Life is seen as a constant state of negotiation with the spirit world. The core principle is maintaining <strong>pamuhat</strong> (balance or harmony).</p>
+  
+  <div style="text-align: center; margin: 25px 0;">
+    <img src="pamuhat.jpg" alt="Bagobo Ritual Offerings" 
+         style="width: 100%; max-width: 700px; height: auto; 
+                border-radius: 12px; 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+                border: 3px solid var(--accent-gold);">
+  </div>
+
+  <div style="text-align: center; margin-top: -10px; margin-bottom: 30px;">
+    <a href="#" target="_blank" 
+       style="font-size: 14px; color: var(--primary-brown); text-decoration: none;">
+       Image Source: Bagobo Ritual Offerings – Facebook Post
+    </a>
+  </div>
+  
+  <h4>Good Fortune vs. Misfortune</h4>
+  <ul>
+    <li id="content"><strong>Good Fortune:</strong> Health, bountiful harvests, successful childbirth—signs of being in favor with the spirits</li>
+    <li id="content"><strong>Misfortune:</strong> Illness, crop failure, accidents—signs of imbalance caused by:
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li id="content">Offending a spirit (e.g., cutting a sacred tree without permission)</li>
+        <li id="content">Neglecting an obligation (failing to perform required offerings)</li>
+        <li id="content">Malicious magic from an enemy</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>Key Rituals and Practices</h3>
+  
+  <div class="dance-category">
+    <h4>1. Major Life-Cycle Rituals</h4>
+    <ul>
+      <li id="content"><strong>Birth:</strong> Rituals protect mother and newborn from vulnerable spirits. The placenta is buried ritually to connect the child to the land.</li>
+      <li id="content"><strong>Marriage (Panlangoan):</strong> Complex series of negotiations, exchanges, and ceremonies involving families and seeking blessings from ancestral and nature spirits for fertility and prosperity.</li>
+      <li id="content"><strong>Death and Afterlife:</strong> Elaborate rituals where the soul (gimokod) journeys to the afterlife (Gimokodan). Extensive feasts, animal sacrifices, and chants ensure safe passage and prevent the soul from becoming a lost, malevolent spirit.</li>
+    </ul>
+  </div>
+
+  <div class="dance-category">
+    <h4>2. Agricultural Cycle Rituals</h4>
+    <ul>
+      <li id="content"><strong>Clearing and Planting:</strong> The baylan performs rituals to ask permission from land spirits (tagabawa) to clear a field, using chants and offerings (betel nut, rice, chicken).</li>
+      <li id="content"><strong>Harvest (Kahimunan):</strong> Major thanksgiving festival where first fruits are offered to spirits before community partaking. A time of communal music, dance, and feasting to express gratitude.</li>
+    </ul>
+  </div>
+
+  <div class="dance-category">
+    <h4>3. Healing Rituals (Panlibut)</h4>
+    <ul>
+      <li id="content">Illness attributed to spiritual causes: soul loss, spirit possession, or witchcraft</li>
+      <li id="content">The baylan or mabalian enters a trance state induced by agung gongs and incense smoke</li>
+      <li id="content">Through chants (tud-om), they diagnose the cause—which spirit is offended or which soul-fragment has wandered</li>
+      <li id="content">Healing involves offerings, sacrifices (usually chickens), and symbolic acts like "calling back" the lost soul</li>
+    </ul>
+  </div>
+
+  <div style="text-align: center; margin: 25px 0;">
+    <img src="Healing-Ritual.jpg" alt="Baylan Performing Healing Ritual" 
+         style="width: 100%; max-width: 800px; height: auto; 
+                border-radius: 12px; 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+                border: 3px solid var(--accent-gold);">
+  </div>
+  <div style="text-align: center; margin-top: -10px; margin-bottom: 30px;">
+    <a href="#" target="_blank" 
+       style="font-size: 14px; color: var(--primary-brown); text-decoration: none;">
+       Image Source: Baylan Healing Ritual – Sound Cloud
+    </a>
+  </div>
+
+  <h3>Sacred Intermediaries: Spiritual Specialists</h3>
+  
+  <div class="costume-comparison">
+    <div class="costume-card">
+      <h4>Baylan (Shaman)</h4>
+      <div class="costume-items">
+        <div class="costume-item">
+          <div class="costume-name">Primary Role</div>
+          <div class="costume-desc">Mediator between human and spirit worlds</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">Responsibilities</div>
+          <div class="costume-desc">Performs major public rituals, divination, healing, interprets omens and dreams</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">Gender</div>
+          <div class="costume-desc">Primarily male</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="costume-card">
+      <h4>Mabalian (Priestess)</h4>
+      <div class="costume-items">
+        <div class="costume-item">
+          <div class="costume-name">Primary Role</div>
+          <div class="costume-desc">Female ritualist with specialized knowledge</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">Responsibilities</div>
+          <div class="costume-desc">Healing herbs, women's life cycles, weaving sacred cloth, birth and fertility rituals</div>
+        </div>
+        <div class="costume-item">
+          <div class="costume-name">Gender</div>
+          <div class="costume-desc">Female</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Sacred Objects and Places</h3>
+  <ul>
+    <li id="content"><strong>Heirloom Pieces (Panablog):</strong> Beaded ornaments, brass belts (sinalapid), and blades are imbued with gimokod. They are ritual objects used in ceremonies and passed down as sacred trust.</li>
+    <li id="content"><strong>Mount Apo (Apo Sandawa):</strong> The absolute axis of spiritual geography—home of highest deities, source of life (rivers), and ultimate ancestral territory. Pilgrimages and offerings are made to its slopes.</li>
+    <li id="content"><strong>Ritual Paraphernalia:</strong> Agung gongs, betel nut offerings (mamaon), and specific textiles are sanctified objects facilitating communication with the unseen world.</li>
+  </ul>
+
+
+  <p id="content">The Bagobo spiritual system is a living tradition that continues to evolve while maintaining core principles of balance, reciprocity, and respect for the spirit world.</p>
+
+  <div class="cultural-motif">☾ ✦ ☼ ✦ ☽</div>
   
   <div class="explore-buttons">
     <button onclick="showPage('about')"><i class="fas fa-arrow-left"></i> Back to About</button>
@@ -1096,8 +1489,8 @@
       </div>
       
       <div class="developer-card" style="text-align: center; width: 200px;">
-        <img src="andrea.jpg" alt="Developer 3" class="developer-img">
-        <h5 class="developer-name" style="margin-top: 10px;">Andrea M. Jandog</h5>
+        <img src="andrea.png" alt="Developer 3" class="developer-img">
+        <h5 class="developer-name" style="margin-top: 10px;">Andrea P. Jandog</h5>
       </div>
       
       <div class="developer-card" style="text-align: center; width: 200px;">
@@ -1203,6 +1596,18 @@
     galleryImages.forEach(img => {
       img.addEventListener('mouseenter', function() {
         this.style.transform = 'scale(1.05)';
+      });
+      img.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+    
+    // Add hover effect to clothing gallery images
+    const clothingImages = document.querySelectorAll('.clothing-image');
+    clothingImages.forEach(img => {
+      img.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+        this.style.transition = 'transform 0.3s';
       });
       img.addEventListener('mouseleave', function() {
         this.style.transform = 'scale(1)';
